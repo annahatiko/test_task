@@ -1,28 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { CardsList } from './components/cardsList';
+import { FilterBar } from './components/filterBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = props => (
+    <Provider store={props.store}>
+        <FilterBar/>
+        <CardsList/>
+    </Provider>
+);
+
+App.propTypes = {
+    store: PropTypes.shape({}),
+};
 
 export default App;
+
